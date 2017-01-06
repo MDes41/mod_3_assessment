@@ -1,8 +1,7 @@
 class SearchService
 
 	def self.search_by_zip(zip)
-		new(zip)
-		Faraday.get("https://api.bestbuy.com/v1/stores(area(#{zip},25))?apiKey=#{ENV['BB_API_KEY']}&format=json&show=longName,city,distance,phone,storeType")
+		Faraday.get("https://api.bestbuy.com/v1/stores(area(#{zip},25))?apiKey=#{ENV['BB_API_KEY']}&format=json&show=longName,city,distance,phone,storeType&pageSize=15")
 	end
 
 	def self.stores(zip)
