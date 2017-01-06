@@ -52,7 +52,7 @@ describe 'Api controller' do
 
 			js = JSON.parse(response.body, symbolize_names: true)
 
-			expect(js).to be_kind_of(Array)
+			expect(js).to be_kind_of(Array)exit
 			expect(response.status).to be(204)
 			expect(js.count).to be(3)
 			expect(js.first).to have_key(:name)
