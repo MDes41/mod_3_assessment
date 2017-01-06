@@ -13,5 +13,12 @@ describe 'Search Service' do
 			expect(json_parsed_response).to have_key(:total)
 			expect(json_parsed_response).to have_key(:stores)
 		end
+
+		it 'returns a total number of stores' do
+
+			response = SearchService.total(80202)
+
+			expect(response).to eq(16)
+		end
 	end
 end
