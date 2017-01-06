@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe 'Hit Best Buy API' do
 	context 'Search for stores in area code' do
-		it 'returns 15 stores' do
+		xit 'returns 15 stores' do
 
 				visit '/'
 
