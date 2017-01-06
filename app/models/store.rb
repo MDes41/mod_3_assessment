@@ -1,6 +1,7 @@
 class Store
 
 	attr_reader :name, :city, :distance, :type, :phone
+	
 	def initialize(store)
 		@name = store[:longName]
 		@city = store[:city]
