@@ -33,13 +33,13 @@ describe 'Search Service' do
 		end
 
 		it 'store info makes a store model' do
-			response = SearchService.stores_info(80202)
+			response = SearchService.store_info(80202)
 
 			expect(response).to be_kind_of(Array)
 			expect(response.first).to be_kind_of(Store)
 			expect(response.first).to respond_to(:name)
 			expect(response.first).to respond_to(:city)
-			expect(response.first).to respond_to(:distance
+			expect(response.first).to respond_to(:distance)
 			expect(response.first).to respond_to(:type)
 			expect(response.first).to respond_to(:phone)
 		end
