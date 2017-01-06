@@ -6,7 +6,7 @@ class SearchService
 
 	def self.stores(zip)
 		response = search_by_zip(zip) 
-		JSON.parse(response.body, sybolize_names: true)[:stores]
+		JSON.parse(response.body, symbolize_names: true)[:stores]
 	end
 
 	def self.total(zip)
@@ -14,6 +14,11 @@ class SearchService
 		JSON.parse(response.body, symbolize_names: true)[:total]
 	end
 
+	def self.store_info(zip)
+		stores(zip).map do |store|
+			Store.new(store)
+		end
+	end
 
 	private
 		attr_reader :response

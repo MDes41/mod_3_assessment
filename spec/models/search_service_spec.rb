@@ -20,5 +20,28 @@ describe 'Search Service' do
 
 			expect(response).to eq(16)
 		end
+
+		it 'returns stores' do
+			response = SearchService.stores(80202)
+
+			expect(response).to be_kind_of(Array)
+			expect(response.first).to have_key(:longName)
+			expect(response.first).to have_key(:city)
+			expect(response.first).to have_key(:distance)
+			expect(response.first).to have_key(:storeType)
+			expect(response.first).to have_key(:phone)
+		end
+
+		it 'store info makes a store model' do
+			response = SearchService.stores_info(80202)
+
+			expect(response).to be_kind_of(Array)
+			expect(response.first).to be_kind_of(Store)
+			expect(response.first).to respond_to(:name)
+			expect(response.first).to respond_to(:city)
+			expect(response.first).to respond_to(:distance
+			expect(response.first).to respond_to(:type)
+			expect(response.first).to respond_to(:phone)
+		end
 	end
 end
