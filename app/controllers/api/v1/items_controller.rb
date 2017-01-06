@@ -9,17 +9,20 @@ class Api::V1::ItemsController < ApplicationController
 	end
 
 	def destroy
-		Item.find(params[:id]).destroy
-		render json: Item.all, status: 204
+		item = Item.find(params[:id])
+		if item.delete
+			render json: Item.all, status: 204
+		end
 	end
 
 	def create
-		item = Item.new(params)
+		item = Item.new(create_params)
 		if item.save
 			render json: Item.all, status: 201
 		end
 	end
 
-	params
-		params(:name, :description, :image_url)
+	def create_params
+		params.permit(:name, :description, :image_url)
+	end
 end

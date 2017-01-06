@@ -43,31 +43,32 @@ describe 'Api controller' do
 		it 'deletes one item' do
 			item_one  = Item.create(name: 'name one', description: 'description one', image_url: 'image one')
 			item_two  = Item.create(name: 'name two', description: 'description two', image_url: 'image two')
-			item  = Item.create(name: 'name', description: 'description', image_url: 'image')
+			item_three  = Item.create(name: 'name', description: 'description', image_url: 'image')
+			item_four  = Item.create(name: 'name4', description: 'description4', image_url: 'image4')
 
 			delete '/api/v1/items/1'
+
+			byebug
 
 			js = JSON.parse(response.body, symbolize_names: true)
 
 			expect(js).to be_kind_of(Array)
 			expect(response.status).to be(204)
-			expect(js.count).to be(2)
+			expect(js.count).to be(3)
 			expect(js.first).to have_key(:name)
 			expect(js.first).to have_key(:description)
 			expect(js.first).to have_key(:image_url)
 		end
 
-		it 'deletes one item' do
-			item_one  = Item.create(name: 'name one', description: 'description one', image_url: 'image one')
+		it 'creates one item' do
 			item_two  = Item.create(name: 'name two', description: 'description two', image_url: 'image two')
-			item  = Item.create(name: 'name', description: 'description', image_url: 'image')
 
-			delete '/api/v1/items/1'
+			post '/api/v1/items?name=name&description=description&image_url=image_url'
 
 			js = JSON.parse(response.body, symbolize_names: true)
 
 			expect(js).to be_kind_of(Array)
-			expect(response.status).to be(204)
+			expect(response.status).to be(201)
 			expect(js.count).to be(2)
 			expect(js.first).to have_key(:name)
 			expect(js.first).to have_key(:description)
