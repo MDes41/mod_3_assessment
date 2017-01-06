@@ -10,8 +10,16 @@ describe 'Hit Best Buy API' do
 				fill_in "search", with: "80202"
 				click_on "Search"
 
+				expect(current_path).to eq('/search')
+				expect(page).to have_content("16 Total Stores")
+				expect(page).to have_selector('li', count: 15)
+				expect(page).to have_content("Long Name")
+				expect(page).to have_content("City")
+				expect(page).to have_content("Distance")
+				expect(page).to have_content("Phone Number")
+				expect(page).to have_content("Store Type")
 
-			As a user
+				# As a user
 				# When I visit "/"
 				# And I fill in a search box with "80202" and click "search"
 				# Then my current path should be "/search" (ignoring params)
