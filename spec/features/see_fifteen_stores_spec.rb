@@ -12,8 +12,7 @@ describe 'Hit Best Buy API' do
 
 				expect(current_path).to eq('/search')
 				expect(page).to have_content("16 Stores Total")
-				# expect(page).to have_selector('li', count: 15)
-				expect(page).to have_selector('store 15', count: 15)
+				expect(page).to have_selector('div', 'store 15')
 				expect(page).to have_content("Long Name")
 				expect(page).to have_content("City")
 				expect(page).to have_content("Distance")

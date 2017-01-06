@@ -1,14 +1,12 @@
 
 <h2><%= @total %> Stores Total</h2>
-<ul>
 	<% @stores.each_with_index do |store, index| %>
 		
-		<li class="store #{index}">
+		<div class="store #{index}">
 			Long Name: <%= store.name %>
 			City: <%= store.city %>
 			Distance: <%= store.distance %>
 			Phone Number: <%= store.phone %>
 			Store Type: <%= store.type %>
-		</li>
+		</div>
 	<% end %>
-</ul>
