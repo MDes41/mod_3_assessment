@@ -7,10 +7,10 @@ describe 'Hit Best Buy API' do
 
 				visit '/'
 
-				fill_in "q", with: "80202"
-				click_on "search"
+				fill_in "search", with: "80202"
+				click_on "Search"
 
-				
+
 			As a user
 				# When I visit "/"
 				# And I fill in a search box with "80202" and click "search"
